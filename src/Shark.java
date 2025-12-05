@@ -1,0 +1,53 @@
+import java.awt.*;
+
+public class Shark {
+
+    String name;
+    Image aliveimage;
+    Image deadImage;
+    int xpos;
+    int ypos;
+    int speed;
+    double dx;
+    double dy;
+    int width;
+    int height;
+    boolean isAlive = true;
+    int time = 0;
+    Rectangle hitbox;
+
+    public Shark() {
+        hitbox = new Rectangle(xpos, ypos, width, height);
+    }
+
+    public Shark(int xposInput, int yposInput, double dxInput, double dyInput, int widthInput, int heightInput) {
+        xpos = xposInput;
+        ypos = yposInput;
+        dx = dxInput;
+        dy = dyInput;
+        width = widthInput;
+        height = heightInput;
+
+        hitbox = new Rectangle(xpos, ypos, width, height);
+    }
+
+    public void move() {
+        xpos = xpos + (int) dx;
+        ypos = ypos + (int) dy;
+        if (xpos >= 900) {
+            xpos = 1;
+        }
+
+        if (xpos <= 0) {
+            xpos = 899;
+        }
+        if (ypos <= 0) {
+            ypos = 599;
+        }
+        if (ypos >= 600) {
+            ypos = 1;
+        }
+        hitbox = new Rectangle(xpos, ypos, width, height);
+    }
+}
+
